@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   );
 
   return (
-    <Layout>
+    <Layout loading={loading}>
       <Loading loading={loading} />
       {!loading && <Component {...pageProps} />}
     </Layout>

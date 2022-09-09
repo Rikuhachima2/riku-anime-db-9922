@@ -7,7 +7,7 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-export default function Navbar() {
+export default function Navbar({ loading }) {
   return (
     <header>
       <div>
@@ -17,7 +17,7 @@ export default function Navbar() {
           </a>
         </Link>
       </div>
-      <nav>
+      <nav className={`${loading ? "disabled" : ""}`}>
         <Link href="/">
           <a>Home</a>
         </Link>
