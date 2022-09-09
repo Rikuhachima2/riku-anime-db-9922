@@ -44,10 +44,10 @@ export default function AnimeId({ data: anime }) {
         <div className={styles.animeDetailContent}>
           <div className={styles.genres}>
             <strong>Genre: </strong>
-            {anime.genres.map((genre) => {
+            {anime.genres.map((genre, index) => {
               return (
                 <Link
-                  key={genre.mal_id}
+                  key={index}
                   href={genre.url}
                   target="_blank"
                   rel="noopener noreferrer"
