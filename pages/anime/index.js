@@ -26,7 +26,7 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-export default function AnimePage({ data, url }) {
+export default function AnimePage({ data }) {
   const [search, setSearch] = useState("");
   const router = useRouter();
 

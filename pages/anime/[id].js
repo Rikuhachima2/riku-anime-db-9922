@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
 import styles from "../../styles/Anime.module.css";
 export async function getServerSideProps(ctx) {
   const { id } = ctx.params;
@@ -22,8 +23,14 @@ export async function getServerSideProps(ctx) {
 }
 
 export default function AnimeId({ data: anime }) {
-  const router = useRouter();
+  useEffect(() => {
+    window.scrollBy({
+      behavior: "smooth",
+      top: 100,
+    });
 
+    return () => {};
+  }, []);
   return (
     <div>
       <Head>
@@ -50,13 +57,14 @@ export default function AnimeId({ data: anime }) {
             <strong>Genre: </strong>
             {anime.genres.map((genre, index) => {
               return (
-                <Link
-                  key={index}
-                  href={genre.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <a className={styles.genre}>{genre.name}</a>
+                <Link key={index} href={genre.url}>
+                  <a
+                    className={styles.genre}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {genre.name}
+                  </a>
                 </Link>
               );
             })}

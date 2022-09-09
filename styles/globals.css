@@ -31,11 +31,16 @@ input {
   outline: 0;
 }
 
+a {
+  text-decoration: underline;
+}
+
 /*  My css custom */
 .col-12 {
   grid-column: span 12;
 }
 .button {
+  cursor: pointer;
   color: white;
   background: #1f44ff;
   outline: 0;

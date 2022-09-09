@@ -13,7 +13,7 @@ export default function Navbar({ loading }) {
       <div>
         <Link href="/">
           <a>
-            <h1>Anime.DB</h1>
+            <h1 style={{ color: "#fff34eef" }}>Rikunime.DB</h1>
           </a>
         </Link>
       </div>

@@ -28,10 +28,6 @@ export async function getServerSideProps({ query }) {
   };
 }
 
-// SearchPage.getInitialProps = async ({ params }) => {
-//   console.log(params);
-// };
-
 export default function SearchPage({ data, searchingQuery }) {
   const router = useRouter();
   return (
@@ -43,7 +39,13 @@ export default function SearchPage({ data, searchingQuery }) {
       </Head>
       <div className={styles.sectionHeader}>
         <h1>Searching : {searchingQuery}</h1>
-        <button onClick={() => router.back()}>Back</button>
+        <button
+          onClick={() => router.back()}
+          className="button"
+          style={{ opacity: ".8" }}
+        >
+          Back
+        </button>
       </div>
       <div className={styles.animesContainer}>
         {data.map((anime) => {
