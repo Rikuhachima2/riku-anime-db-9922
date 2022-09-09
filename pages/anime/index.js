@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -8,7 +9,7 @@ import styles from "../../styles/Anime.module.css";
 
 export async function getServerSideProps(ctx) {
   const res = await fetch(
-    "http://api.jikan.moe/v4/anime?limit=20&type=tv&start_date=2022-07"
+    "http://api.jikan.moe/v4/anime?limit=20&type=tv&start_date=2022-07&sfw=false&status=airing"
   );
 
   const { data } = await res.json();
@@ -71,18 +72,23 @@ export default function AnimePage({ data, url }) {
           return (
             <div className={styles.card} key={anime.mal_id}>
               {anime.score && (
-                <div className={styles.rating}>{anime.score}</div>
+                <div className={styles.rating}>
+                  {/* icon */}
+                  <Image width={15} height={15} src="/star-icon.svg" />
+                  {anime.score}
+                </div>
               )}
 
-              <picture>
-                <source srcSet={anime.images.jpg.image_url} type="image/jpg" />
-                <img
-                  loading="lazy"
-                  src={anime.images.jpg.image_url}
-                  alt="img"
-                  className={styles.animeImage}
-                />
-              </picture>
+              <Image
+                loading="lazy"
+                style={{ objectFit: "cover", aspectRatio: "3/4" }}
+                src={anime.images.jpg.large_image_url}
+                alt={anime.title}
+                width={150}
+                height={200}
+                layout="responsive"
+                className={styles.animeImage}
+              />
 
               <div className={styles.animeContent}>
                 <Link href={`/anime/${anime.mal_id}`}>

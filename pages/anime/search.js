@@ -1,8 +1,7 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { withRouter } from "next/router";
-import { Router } from "next/router";
 
 // styles
 import styles from "../../styles/Anime.module.css";
@@ -11,7 +10,7 @@ export async function getServerSideProps({ query }) {
   const { q: searchingQuery } = query;
 
   const res = await fetch(
-    `http://api.jikan.moe/v4/anime?q=${searchingQuery}&limit=15`
+    `http://api.jikan.moe/v4/anime?q=${searchingQuery}&limit=15&sfw=false`
   );
 
   const { data } = await res.json();
@@ -52,15 +51,16 @@ export default function SearchPage({ data, searchingQuery }) {
             <div className={styles.card} key={anime.mal_id}>
               <div className={styles.rating}>{anime.score}</div>
 
-              <picture>
-                <source srcSet={anime.images.jpg.image_url} type="image/jpg" />
-                <img
-                  loading="lazy"
-                  src={anime.images.jpg.image_url}
-                  alt="img"
-                  className={styles.animeImage}
-                />
-              </picture>
+              <Image
+                loading="lazy"
+                style={{ objectFit: "cover", aspectRatio: "3/4" }}
+                src={anime.images.jpg.large_image_url}
+                alt={anime.title}
+                width={150}
+                height={200}
+                layout="responsive"
+                className={styles.animeImage}
+              />
 
               <div className={styles.animeContent}>
                 <Link href={`/anime/${anime.mal_id}`}>
@@ -71,26 +71,6 @@ export default function SearchPage({ data, searchingQuery }) {
           );
         })}
       </div>
-      {/* <div className={styles.animesContainer}>
-        <div className={styles.card}>
-          <div className={styles.rating}>8.7</div>
-
-          <img
-            src="https://cdn.myanimelist.net/r/160x220/images/anime/1530/120110.webp?s=4aaac682a2a4727af927349fa2eb9260"
-            alt="img"
-            className={styles.animeImage}
-          />
-
-          <div className={styles.animeContent}>
-            <h2 className={styles.title}>Overlord</h2>
-            <div className={styles.genres}>
-              <span className={styles.genre}>Action</span>
-              <span className={styles.genre}>Adventure</span>
-              <span className={styles.genre}>Fantasy</span>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

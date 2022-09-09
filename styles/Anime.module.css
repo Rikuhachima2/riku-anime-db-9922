@@ -26,8 +26,7 @@
   margin: 20px 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* grid-auto-rows: 25vh; */
-  gap: 40px;
+  gap: 35px;
 }
 
 /* card */
@@ -68,13 +67,14 @@
   background: #fff34e;
   color: rgb(49, 49, 49);
   font-weight: 500;
-  padding: 16px;
+  padding: 14px;
   border-radius: 6px;
   position: absolute;
   right: 0;
   top: 30%;
   margin-right: -16px;
   z-index: 99;
+  font-size: 14px;
 }
 
 /* card content */
