@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../../styles/Anime.module.css";
@@ -28,18 +29,21 @@ export default function AnimeId({ data: anime }) {
       <Head>
         <title>{anime.title}</title>
       </Head>
+
       <div className={styles.animeDetailContainer}>
         <h1 className={styles.animeDetailTitle}>{anime.title}</h1>
 
-        <picture className={styles.animeDetailImage}>
-          <source srcSet={anime.images.jpg.large_image_url} type="image/jpg" />
-          <img
+        <div className={styles.animeDetailImage}>
+          <Image
             loading="lazy"
+            style={{ objectFit: "cover", aspectRatio: "3/4" }}
             src={anime.images.jpg.large_image_url}
             alt={anime.title}
-            className={styles.animeDetailImage}
+            width={150}
+            height={200}
+            layout="responsive"
           />
-        </picture>
+        </div>
 
         <div className={styles.animeDetailContent}>
           <div className={styles.genres}>
@@ -90,11 +94,6 @@ export default function AnimeId({ data: anime }) {
           <Link href={anime.url}>
             <a style={{ textDecoration: "underline" }}>MAL Link</a>
           </Link>
-        </div>
-        <div className="col-12">
-          <button className="button" onClick={() => router.back()}>
-            Back
-          </button>
         </div>
       </div>
     </div>

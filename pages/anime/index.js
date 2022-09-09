@@ -88,43 +88,17 @@ export default function AnimePage({ data, url }) {
                 <Link href={`/anime/${anime.mal_id}`}>
                   <h2 className={styles.title}>{anime.title}</h2>
                 </Link>
-                {/* <div className={styles.genres}>
-                  {anime.genres.map((genre) => {
-                    return (
-                      <span className={styles.genre} key={genre.mal_id}>
-                        {genre.name}
-                      </span>
-                    );
-                  })} */}
-                {/* <span className={styles.genre}>Action</span>
-                  <span className={styles.genre}>Adventure</span>
-                  <span className={styles.genre}>Fantasy</span> */}
-                {/* </div> */}
+
+                {anime.season && (
+                  <p style={{ textDecoration: "underline" }}>
+                    {anime.season}, {anime.year}
+                  </p>
+                )}
               </div>
             </div>
           );
         })}
       </div>
-      {/* <div className={styles.animesContainer}>
-        <div className={styles.card}>
-          <div className={styles.rating}>8.7</div>
-
-          <img
-            src="https://cdn.myanimelist.net/r/160x220/images/anime/1530/120110.webp?s=4aaac682a2a4727af927349fa2eb9260"
-            alt="img"
-            className={styles.animeImage}
-          />
-
-          <div className={styles.animeContent}>
-            <h2 className={styles.title}>Overlord</h2>
-            <div className={styles.genres}>
-              <span className={styles.genre}>Action</span>
-              <span className={styles.genre}>Adventure</span>
-              <span className={styles.genre}>Fantasy</span>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
