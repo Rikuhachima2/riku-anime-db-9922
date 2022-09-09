@@ -47,6 +47,7 @@ export default function AnimeId({ data: anime }) {
             {anime.genres.map((genre) => {
               return (
                 <Link
+                  key={genre.mal_id}
                   href={genre.url}
                   target="_blank"
                   rel="noopener noreferrer"
