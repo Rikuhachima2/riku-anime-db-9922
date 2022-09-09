@@ -31,12 +31,15 @@ export default function AnimeId({ data: anime }) {
       <div className={styles.animeDetailContainer}>
         <h1 className={styles.animeDetailTitle}>{anime.title}</h1>
 
-        <img
-          loading="lazy"
-          src={anime.images.jpg.large_image_url}
-          alt={anime.title}
-          className={styles.animeDetailImage}
-        />
+        <picture>
+          <source srcSet={anime.images.jpg.large_image_url} type="image/jpg" />
+          <img
+            loading="lazy"
+            src={anime.images.jpg.large_image_url}
+            alt={anime.title}
+            className={styles.animeDetailImage}
+          />
+        </picture>
 
         <div className={styles.animeDetailContent}>
           <div className={styles.genres}>

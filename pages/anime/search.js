@@ -52,12 +52,15 @@ export default function SearchPage({ data, searchingQuery }) {
             <div className={styles.card} key={anime.mal_id}>
               <div className={styles.rating}>{anime.score}</div>
 
-              <img
-                loading="lazy"
-                src={anime.images.jpg.image_url}
-                alt="img"
-                className={styles.animeImage}
-              />
+              <picture>
+                <source srcSet={anime.images.jpg.image_url} type="image/jpg" />
+                <img
+                  loading="lazy"
+                  src={anime.images.jpg.image_url}
+                  alt="img"
+                  className={styles.animeImage}
+                />
+              </picture>
 
               <div className={styles.animeContent}>
                 <Link href={`/anime/${anime.mal_id}`}>

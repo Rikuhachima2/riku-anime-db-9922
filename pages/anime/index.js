@@ -74,12 +74,15 @@ export default function AnimePage({ data, url }) {
                 <div className={styles.rating}>{anime.score}</div>
               )}
 
-              <img
-                loading="lazy"
-                src={anime.images.jpg.image_url}
-                alt="img"
-                className={styles.animeImage}
-              />
+              <picture>
+                <source srcSet={anime.images.jpg.image_url} type="image/jpg" />
+                <img
+                  loading="lazy"
+                  src={anime.images.jpg.image_url}
+                  alt="img"
+                  className={styles.animeImage}
+                />
+              </picture>
 
               <div className={styles.animeContent}>
                 <Link href={`/anime/${anime.mal_id}`}>
