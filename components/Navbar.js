@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+export async function getServerSideProps(ctx) {
+  console.log(ctx.req);
+  return {
+    props: {},
+  };
+}
+
 export default function Navbar() {
   return (
     <header>

@@ -94,7 +94,8 @@
   /* /* margin-top: 10px; */
 }
 .genre {
-  font-size: 12px;
+  text-decoration: underline;
+  /* font-size: 12px; */
   margin: 0 10px;
 }
 

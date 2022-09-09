@@ -2,11 +2,11 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 
 // css
-import "../styles/globals.css";
+import "@styles/globals.css";
 
 // component
-import Layout from "../components/Layout";
-import Loading from "../components/Loading";
+import Layout from "@components/Layout";
+import Loading from "@components/Loading";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
