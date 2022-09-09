@@ -31,7 +31,7 @@ export default function AnimeId({ data: anime }) {
       <div className={styles.animeDetailContainer}>
         <h1 className={styles.animeDetailTitle}>{anime.title}</h1>
 
-        <picture>
+        <picture className={styles.animeDetailImage}>
           <source srcSet={anime.images.jpg.large_image_url} type="image/jpg" />
           <img
             loading="lazy"
