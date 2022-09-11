@@ -8,10 +8,10 @@ export default function NotFound() {
         textAlign: "left",
       }}
     >
-      <h2>Ooop..</h2>
+      <h2>Uuuuppps..</h2>
       <p>Halaman Tidak ditemukan</p>
       <Link href="/anime">
-        <a>Kembali</a>
+        <a>Kembali ke Beranda</a>
       </Link>
     </div>
   );

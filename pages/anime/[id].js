@@ -43,7 +43,12 @@ export default function AnimeId({ data: anime }) {
         <div className={styles.animeDetailImage}>
           <Image
             loading="lazy"
-            style={{ objectFit: "cover", aspectRatio: "3/4" }}
+            style={{
+              objectFit: "cover",
+              aspectRatio: "3/4",
+              width: "100%",
+              height: "100%",
+            }}
             src={anime.images.jpg.large_image_url}
             alt={anime.title}
             width={150}

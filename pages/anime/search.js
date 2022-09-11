@@ -14,7 +14,7 @@ export async function getServerSideProps({ query }) {
   );
 
   const { data } = await res.json();
-  if (!res.ok) {
+  if (!res.ok || data.length === 0) {
     return {
       notFound: true,
     };
@@ -30,6 +30,7 @@ export async function getServerSideProps({ query }) {
 
 export default function SearchPage({ data, searchingQuery }) {
   const router = useRouter();
+  console.log(data);
   return (
     <div>
       <Head>

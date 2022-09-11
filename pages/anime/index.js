@@ -1,3 +1,4 @@
+import getAnimeList from "libs/getAnimeList";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,25 +9,22 @@ import { useState } from "react";
 import styles from "../../styles/Anime.module.css";
 
 export async function getServerSideProps(ctx) {
-  const res = await fetch(
-    "http://api.jikan.moe/v4/anime?limit=20&type=tv&start_date=2022-07&sfw=false&status=airing"
-  );
-
-  const { data } = await res.json();
-  if (!res.ok) {
+  try {
+    const { data } = await getAnimeList();
     return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      error,
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      data,
-    },
-  };
 }
 
-export default function AnimePage({ data }) {
+export default function AnimePage({ data, error }) {
   const [search, setSearch] = useState("");
   const router = useRouter();
 
@@ -49,6 +47,7 @@ export default function AnimePage({ data }) {
       </Head>
       <div className={styles.sectionHeader}>
         <h1>List Anime</h1>
+        {error && <span>{error.message}</span>}
 
         <form onSubmit={handleSearch}>
           <input
@@ -92,7 +91,9 @@ export default function AnimePage({ data }) {
 
               <div className={styles.animeContent}>
                 <Link href={`/anime/${anime.mal_id}`}>
-                  <h2 className={styles.title}>{anime.title}</h2>
+                  <a>
+                    <h2 className={styles.title}>{anime.title}</h2>
+                  </a>
                 </Link>
 
                 {anime.season && (

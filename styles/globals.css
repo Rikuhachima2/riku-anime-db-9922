@@ -84,6 +84,7 @@ header h1 {
 
 nav.disabled > a {
   pointer-events: none;
+  display: none;
 }
 
 nav a {
@@ -116,4 +117,18 @@ footer {
   padding: 40px 0;
   display: flex;
   justify-content: center;
+}
+
+/* responsive  */
+@media screen and (max-width: 720px) {
+  header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  header div,
+  nav {
+    justify-self: center;
+    grid-column: span 3;
+  }
 }
