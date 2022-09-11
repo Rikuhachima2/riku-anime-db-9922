@@ -73,7 +73,12 @@ export default function AnimePage({ data, error }) {
               {anime.score && (
                 <div className={styles.rating}>
                   {/* icon */}
-                  <Image width={15} height={15} src="/star-icon.svg" />
+                  <Image
+                    width={15}
+                    height={15}
+                    src="/star-icon.svg"
+                    alt="star icon"
+                  />
                   {anime.score}
                 </div>
               )}

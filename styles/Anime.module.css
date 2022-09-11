@@ -161,10 +161,6 @@
     align-items: start;
   }
 
-  /* .animesContainer {
-    /* grid-auto-rows: 40px; */
-  } */
-
   .animeDetailImage {
     grid-column: 1 / span 12;
   }
