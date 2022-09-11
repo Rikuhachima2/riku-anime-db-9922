@@ -84,7 +84,7 @@ header h1 {
 
 nav.disabled > a {
   pointer-events: none;
-  display: none;
+  /* display: none; */
 }
 
 nav a {
