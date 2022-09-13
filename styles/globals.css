@@ -56,7 +56,7 @@ a {
 }
 
 /* loading */
-.loading {
+.loading-page {
   height: 100%;
   text-align: center;
   transform: translateY(100px);

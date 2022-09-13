@@ -1,8 +1,12 @@
 export default function Loading({ loading }) {
-  return (
-    <div className={loading ? "loading" : "d-none"}>
-      <h1>Memuat...</h1>
-      <p>tunggu sebentar..</p>
-    </div>
-  );
+  if (loading) {
+    return (
+      <div className="loading-page">
+        <h1>Memuat...</h1>
+        <p>tunggu sebentar..</p>
+      </div>
+    );
+  }
+
+  return;
 }
